@@ -1,23 +1,30 @@
 package de.igelstudios.game;
 
 import de.igelstudios.ClientMain;
-import de.igelstudios.igelengine.client.graphics.Renderer;
-import de.igelstudios.igelengine.client.graphics.batch.ObjectBatch;
-import de.igelstudios.igelengine.client.lang.Text;
+import de.igelstudios.game.client.KeyInput;
 import de.igelstudios.igelengine.common.networking.ErrorHandler;
-import de.igelstudios.igelengine.common.networking.client.Client;
-import de.igelstudios.igelengine.common.scene.SceneObject;
+
+import java.util.UUID;
 
 public class Main {
+    private static UUID uuid;
+    private static GameManager manager;
 
     public static void main(String[] args){
         ClientMain main = new ClientMain(Main.class);
-        Renderer.get().render(new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(0,0),15.0f,15.0f);
-        Renderer.get().render(Text.literal("A B").setColor(1.0f,0.0f,0.0f),10.0f,10.0f);
 
-        new Client("localhost",new SimpleHandler()).start();
-        System.out.println("A      A");
+        KeyInput.get().init(ClientMain.getInstance().getEngine().getInput());
+        manager = new GameManager();
+        main.getEngine().addTickable(manager);
         main.start();
+    }
+
+    public static UUID getUuid() {
+        return uuid;
+    }
+
+    public static GameManager getManager() {
+        return manager;
     }
 
     public static class SimpleHandler implements ErrorHandler{

@@ -35,7 +35,7 @@ switch (org.gradle.internal.os.OperatingSystem.current()) {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation 'com.github.EinePerson:IgelEngine:v1.0.1-alpha'
+    implementation "com.github.EinePerson:IgelEngine:v$engine_version"
 
     /*implementation platform("org.lwjgl:lwjgl-bom:3.3.2")
     implementation "org.lwjgl:lwjgl"
