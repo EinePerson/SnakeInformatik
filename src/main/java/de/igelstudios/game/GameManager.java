@@ -41,5 +41,7 @@ public class GameManager implements Tickable {
         setSpeed(DEFAULT_SPEED);
     }
 
-
+    public Map<UUID, Snake> getSnakes() {
+        return snakes;
+    }
 }

@@ -1,23 +1,18 @@
 package de.igelstudios.game.events;
 
-import de.igelstudios.game.Main;
-
-public class SpeedEvent extends Event{
-
+public class BlockEvent extends Event{
     @Override
     public int getTime() {
-        return 1000;
+        return 1500;
     }
 
     @Override
     public String getName() {
-        return "SpeedEvent";
+        return "blockevent";
     }
 
     @Override
     public void execute() {
-        Main.getManager().setSpeed(10);
+
     }
-
-
 }
