@@ -39,4 +39,9 @@ public class SnakeSegment {
         obj.setPos(pos.x,pos.y);
     }
 
+    public void moveTo(int x, int y){
+        pos.x = x;
+        pos.y = y;
+        obj.setPos(x, y);
+    }
 }
