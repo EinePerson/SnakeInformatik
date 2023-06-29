@@ -1,4 +1,4 @@
-package de.igelstudios.game.menues;
+package de.igelstudios.game.menus;
 
 import de.igelstudios.igelengine.client.graphics.Renderer;
 import de.igelstudios.igelengine.client.gui.Button;
@@ -8,9 +8,9 @@ import de.igelstudios.igelengine.client.gui.TextField;
 import de.igelstudios.igelengine.client.lang.Text;
 import org.joml.Vector2f;
 
-public class MainMenue {
+public class MainMenu {
     GUI gui;
-    public MainMenue(){
+    public MainMenu(){
         gui = new GUI();
         GUIManager.getInstance().setGui(gui);
 

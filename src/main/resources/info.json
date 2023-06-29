@@ -1,0 +1,7 @@
+{
+  "main": "de.igelstudios.game.Main",
+  "server_main": "de.igelstudios.game.ServerInit",
+  "name": "Snake Game",
+  "build": "",
+  "player": "de.igelstudios.game.Player"
+}

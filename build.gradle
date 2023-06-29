@@ -37,7 +37,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation "com.github.EinePerson:IgelEngine:v$engine_version"
 
-    /*implementation platform("org.lwjgl:lwjgl-bom:3.3.2")
+    implementation platform("org.lwjgl:lwjgl-bom:3.3.2")
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-assimp"
     implementation "org.lwjgl:lwjgl-glfw"
@@ -45,23 +45,49 @@ dependencies {
     implementation "org.lwjgl:lwjgl-openal"
     implementation "org.lwjgl:lwjgl-opengl"
     implementation "org.lwjgl:lwjgl-shaderc"
-    implementation "org.lwjgl:lwjgl-stb"*/
+    implementation "org.lwjgl:lwjgl-stb"
     runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
-    /*runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-nfd::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-shaderc::$lwjglNatives"
-    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"*/
+    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
 }
 
 test {
     useJUnitPlatform()
 }
 
+jar{
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+tasks.register('fatJar', Jar) {
+    manifest.from jar.manifest
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    with jar
+}
+
+tasks.withType(Jar).all {
+    duplicatesStrategy 'exclude'
+}
+
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(20)
+        languageVersion = JavaLanguageVersion.of(project.java_version)
     }
+}
+
+artifacts {
+    archives fatJar
 }

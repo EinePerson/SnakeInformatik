@@ -1,13 +1,11 @@
 package de.igelstudios.game.client;
 
-import de.igelstudios.ClientMain;
 import de.igelstudios.game.Main;
 import de.igelstudios.game.snake.Direction;
 import de.igelstudios.game.snake.Snake;
-import de.igelstudios.igelengine.client.keys.HIDInput;
 import de.igelstudios.igelengine.client.keys.KeyHandler;
 import de.igelstudios.igelengine.client.keys.KeyListener;
-import org.joml.Vector2f;
+import de.igelstudios.igelengine.common.startup.KeyInitializer;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -18,12 +16,12 @@ public class KeyInput implements KeyListener {
 
     }
 
-    public void init(HIDInput input){
-        input.registerKey(GLFW_KEY_W,"up");
-        input.registerKey(GLFW_KEY_A,"left");
-        input.registerKey(GLFW_KEY_S,"down");
-        input.registerKey(GLFW_KEY_D,"right");
-        input.registerKeyListener(this);
+    public void init(KeyInitializer initializer){
+        initializer.add(GLFW_KEY_W,"up");
+        initializer.add(GLFW_KEY_A,"left");
+        initializer.add(GLFW_KEY_S,"down");
+        initializer.add(GLFW_KEY_D,"right");
+        initializer.add(this);
     }
 
     public static KeyInput get(){

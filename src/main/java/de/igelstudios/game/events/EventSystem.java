@@ -21,6 +21,8 @@ public class EventSystem implements Tickable {
     public EventSystem(){
         init = true;
     }
+
+    @Override
     public void tick() {
         if(activeEvent == -1 && tickCount >= 2*ticks){
             int activeEvent = new Random().nextInt(events.size());
