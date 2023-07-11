@@ -3,5 +3,8 @@
   "server_main": "de.igelstudios.game.ServerInit",
   "name": "Snake Game",
   "build": "",
-  "player": "de.igelstudios.game.Player"
+  "player": "de.igelstudios.game.Player",
+  "server_event_listener": "de.igelstudios.game.GameManager",
+  "default_lang": "en_us",
+  "client_event_listener": "de.igelstudios.game.Main"
 }

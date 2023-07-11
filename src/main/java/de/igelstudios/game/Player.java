@@ -10,6 +10,9 @@ public class Player implements ClientNet {
     public Player(UUID uuid){
         this.uuid = uuid;
     }
+    public Player(){
+
+    }
 
     @Override
     public UUID getUUID() {

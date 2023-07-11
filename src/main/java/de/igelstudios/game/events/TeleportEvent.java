@@ -1,6 +1,7 @@
 package de.igelstudios.game.events;
 
 import de.igelstudios.game.Main;
+import de.igelstudios.game.ServerInit;
 import de.igelstudios.game.map.Map;
 import de.igelstudios.game.snake.Snake;
 import org.joml.Vector2f;
@@ -25,7 +26,7 @@ public class TeleportEvent extends Event{
         if (teleported){
             return;
         }
-        for (Snake snake : Main.getManager().getSnakes().values()) {
+        for (Snake snake : ServerInit.getManager().getSnakes().values()) {
             for (int i = 0; i < 100; i++) {
                 int x = new Random().nextInt(0, Map.getInstance().getSizeX());
                 int y = new Random().nextInt(0, Map.getInstance().getSizeY());
@@ -39,6 +40,7 @@ public class TeleportEvent extends Event{
                 }
             }
         }
+        System.out.println(ServerInit.getManager().getSnakes().values());
         teleported = true;
     }
 }

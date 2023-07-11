@@ -1,19 +1,20 @@
 package de.igelstudios.game.snake;
 
 import de.igelstudios.ClientMain;
+import de.igelstudios.igelengine.client.graphics.Renderer;
 import de.igelstudios.igelengine.client.graphics.batch.ObjectBatch;
 import de.igelstudios.igelengine.common.scene.SceneObject;
 import org.joml.Vector2f;
 
 public class SnakeSegment {
     private Vector2f pos;
-    private SceneObject obj;
+    private final SceneObject obj;
 
     SnakeSegment(Vector2f pos){
         this.pos = pos;
         if(ClientMain.getInstance() != null){
-            System.out.println(Thread.currentThread().getName());
-            obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(0,0).setPos(pos.x,pos.y);
+            obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(0,0);
+            Renderer.get().render(obj, pos.x,pos.y);
         }
         else obj = new SceneObject().setPos(pos.x, pos.y);
     }
@@ -43,5 +44,21 @@ public class SnakeSegment {
         pos.x = x;
         pos.y = y;
         obj.setPos(x, y);
+    }
+
+    public void moveTo(Vector2f vec){
+        moveTo((int) vec.x, (int) vec.y);
+    }
+
+    public void remove(){
+        obj.remove();
+    }
+
+    @Override
+    public String toString() {
+        return "SnakeSegment{" +
+                "pos=" + pos +
+                ", obj=" + obj +
+                '}';
     }
 }

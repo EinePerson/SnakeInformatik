@@ -1,6 +1,8 @@
 package de.igelstudios.game.events;
 
+import de.igelstudios.game.GameManager;
 import de.igelstudios.game.Main;
+import de.igelstudios.game.ServerInit;
 
 public class SpeedEvent extends Event{
 
@@ -16,7 +18,7 @@ public class SpeedEvent extends Event{
 
     @Override
     public void execute() {
-        Main.getManager().setSpeed(10);
+        ServerInit.getManager().setSpeed(GameManager.DEFAULT_SPEED / 2);
     }
 
 

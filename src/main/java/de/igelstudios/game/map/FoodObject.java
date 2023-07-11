@@ -5,15 +5,14 @@ import de.igelstudios.igelengine.client.graphics.Renderer;
 import de.igelstudios.igelengine.client.graphics.batch.ObjectBatch;
 import de.igelstudios.igelengine.common.scene.SceneObject;
 
-public class MapObject {
-    private int x,y;
+public class FoodObject {
+    private Food food;
     private final SceneObject obj;
 
-    public MapObject(int x, int y){
-        this.x = x;
-        this.y = y;
+    public FoodObject(Food food,int x,int y){
+        this.food = food;
         if(ClientMain.getInstance() != null) {
-            obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(1, 0).setPos(x,y);
+            obj = new SceneObject().setTex(ObjectBatch.pool.getID(Food.TEXTURE_FILE)).setUv(food.getU(), food.getV());
             Renderer.get().render(obj, x, y);
         }else obj = new SceneObject().setPos(x,y);
     }
@@ -22,17 +21,15 @@ public class MapObject {
         obj.remove();
     }
 
-    public void delete(){
-        obj.remove();
+    public int getX(){
+        return (int) obj.getPos().x;
     }
 
-    public int getX() {
-        return x;
+    public int getY(){
+        return (int) obj.getPos().y;
     }
 
-    public int getY() {
-        return y;
+    public Food getFood() {
+        return food;
     }
-
-
 }
