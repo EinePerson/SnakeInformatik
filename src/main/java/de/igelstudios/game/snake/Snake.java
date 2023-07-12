@@ -59,7 +59,6 @@ public class Snake {
         this.food += food;
         if(this.food >= FOOD_TO_EXTENSION){
             this.food -= FOOD_TO_EXTENSION;
-            //this.food = this.food - FOOD_TO_EXTENSION;
             this.queuedSeg = true;
         }
     }

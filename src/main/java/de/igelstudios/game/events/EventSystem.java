@@ -32,9 +32,7 @@ public class EventSystem implements Tickable {
         if(activeEvent == -1 && tickCount >= 2*ticks){
             activeEvent = new Random().nextInt(events.size());
             tickCount = 0;
-            PacketByteBuf buf = PacketByteBuf.create();
-            buf.writeString(events.get(activeEvent).getName());
-            ServerInit.getManager().getSnakes().keySet().forEach(uuid -> Server.send2Client(ServerMain.getInstance().getEngine().get(uuid),"Event",buf));
+            ServerInit.getManager().getSnakes().keySet().forEach(this::update);
             ticks = events.get(activeEvent).getTime();
         }
         else if(activeEvent != -1 && tickCount <= ticks){
@@ -45,5 +43,12 @@ public class EventSystem implements Tickable {
             activeEvent = -1;
             tickCount ++;
         }
+    }
+
+    public void update(UUID uuid){
+        if(activeEvent == -1)return;
+        PacketByteBuf buf = PacketByteBuf.create();
+        buf.writeString(events.get(activeEvent).getName());
+        Server.send2Client(ServerMain.getInstance().getEngine().get(uuid),"Event",buf);
     }
 }

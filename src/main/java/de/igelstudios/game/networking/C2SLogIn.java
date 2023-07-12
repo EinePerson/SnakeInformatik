@@ -21,6 +21,7 @@ public class C2SLogIn{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        ServerInit.getSystem().update(sender.getUUID());
         GameManager.send2Player(ServerInit.getManager().getSnakes(), sender.getUUID());
     }
 }

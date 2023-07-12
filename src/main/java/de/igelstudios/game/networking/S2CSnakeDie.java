@@ -18,7 +18,7 @@ public class S2CSnakeDie{
         UUID uuid = buf.readUUID();
         Main.getManager().remove(uuid);
         if (Main.getUuid().equals(uuid)) {
-            GUIManager.getInstance().setGui(new DeathMenu());
+            GUIManager.setGUI(new DeathMenu());
             Main.getManager().clear();
             Map.getInstance().removeFood();
             Map.getInstance().removeObjects();

@@ -18,7 +18,7 @@ public class TeleportEvent extends Event{
 
     @Override
     public String getName() {
-        return "teleportevent";
+        return "event.teleport";
     }
 
     @Override
@@ -40,7 +40,6 @@ public class TeleportEvent extends Event{
                 }
             }
         }
-        System.out.println(ServerInit.getManager().getSnakes().values());
         teleported = true;
     }
 }

@@ -16,7 +16,7 @@ public class BlockEvent extends Event{
 
     @Override
     public String getName() {
-        return "blockevent";
+        return "event.block";
     }
 
     @Override
@@ -25,7 +25,7 @@ public class BlockEvent extends Event{
             return;
         }
         Map.getInstance().clear();
-        for (int i = 0; i < Map.getInstance().getSizeX() * Map.getInstance().getSizeY() / 30; i++) {
+        for (int i = 0; i < Map.getInstance().getSizeX() * Map.getInstance().getSizeY() / 60; i++) {
             int x = new Random().nextInt(0, Map.getInstance().getSizeX());
             int y = new Random().nextInt(0, Map.getInstance().getSizeY());
             Map.getInstance().getMapObjects().add(new MapObject(x, y));

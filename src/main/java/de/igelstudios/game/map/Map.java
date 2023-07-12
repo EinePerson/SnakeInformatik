@@ -13,6 +13,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+
+/**
+ * @author Laurin
+ */
 public class Map {
     private int sizeX;
     private int sizeY;
@@ -139,7 +143,6 @@ public class Map {
     }
 
     public void update2C(UUID p){
-        System.out.println(mapObjects);
         PacketByteBuf buf = PacketByteBuf.create();
         buf.writeByte(mapObjects.size());
         mapObjects.forEach(mapObject -> {

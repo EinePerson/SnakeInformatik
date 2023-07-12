@@ -1,9 +1,11 @@
 package de.igelstudios.game.map;
 
-import java.util.Random;
-
 public enum Food{
-    GAP(100,1,0,1,"items.gap");
+    GAP(100,1,0,1,"items.gap"),
+    CARROT(50,6,1,1,"items.carrot"),
+    ONION(25,6,2,1,"items.onion"),
+    BROCCOLI(-50,3,3,1,"items.broccoli")
+    ;
     public static final String TEXTURE_FILE = "test2.png";
     private static final int max = maxSize();
     private final int food,chance,u,v;

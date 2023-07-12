@@ -8,8 +8,8 @@ import de.igelstudios.game.events.TeleportEvent;
 public class Common {
 
     public static void init(){
-        //EventSystem.add(new BlockEvent());
+        EventSystem.add(new BlockEvent());
         EventSystem.add(new SpeedEvent());
-        //EventSystem.add(new TeleportEvent());
+        EventSystem.add(new TeleportEvent());
     }
 }

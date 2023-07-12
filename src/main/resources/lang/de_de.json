@@ -1,3 +1,13 @@
 {
-  "button.connect": "Verbinden"
+  "button.connect": "Verbinden",
+  "menu.death.title": "Gestorben",
+  "menu.death.disconnect": "Trennen",
+  "button.settings": "Einstellungen",
+  "button.quit": "Verlassen",
+  "button.savename": "Name Speichern",
+  "button.savelang": "Sprache Speichern",
+  "button.back": "Zurück",
+  "event.block": "Blöcke Spawnen",
+  "event.speed": "Speed doubled",
+  "event.teleport": "Random Teleports"
 }

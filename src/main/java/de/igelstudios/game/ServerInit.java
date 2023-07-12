@@ -30,8 +30,8 @@ public class ServerInit implements ServerInitializer {
         ServerMain.getInstance().getEngine().addTickable(system);
     }
 
-    public void start(){
-
+    public static EventSystem getSystem() {
+        return system;
     }
 
     @Override

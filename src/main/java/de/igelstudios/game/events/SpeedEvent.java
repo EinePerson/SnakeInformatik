@@ -13,7 +13,7 @@ public class SpeedEvent extends Event{
 
     @Override
     public String getName() {
-        return "SpeedEvent";
+        return "event.speed";
     }
 
     @Override

@@ -9,6 +9,8 @@ import de.igelstudios.game.networking.CNet;
 import de.igelstudios.game.snake.Direction;
 import de.igelstudios.game.snake.Snake;
 import de.igelstudios.game.util.ServerStarter;
+import de.igelstudios.igelengine.client.al.Sound;
+import de.igelstudios.igelengine.client.al.SoundBuffer;
 import de.igelstudios.igelengine.client.graphics.Renderer;
 import de.igelstudios.igelengine.client.graphics.batch.ObjectBatch;
 import de.igelstudios.igelengine.client.gui.GUIManager;
@@ -21,6 +23,7 @@ import de.igelstudios.igelengine.common.scene.SceneObject;
 import de.igelstudios.igelengine.common.startup.EngineInitializer;
 import de.igelstudios.igelengine.common.startup.KeyInitializer;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 import java.net.SocketException;
 import java.util.UUID;
@@ -51,7 +54,6 @@ public class Main implements EngineInitializer,ClientConnectListener{
     public void onInitialize() {
         ServerStarter.create();
         ObjectBatch.pool.getID("test2.png");
-        ObjectBatch.pool.getID("empty.png");
         Common.init();
         //new MainMenu();
         manager = new GameManager();
@@ -59,6 +61,7 @@ public class Main implements EngineInitializer,ClientConnectListener{
         ClientMain.getInstance().getEngine().addTickable(manager);
         //connect("localhost");
         GUIManager.setGUI(new MainMenu());
+        new Sound(-1,false,new Vector3f(40,22,0), SoundBuffer.get("ambient.ogg")).play();
     }
 
     @Override
@@ -71,7 +74,7 @@ public class Main implements EngineInitializer,ClientConnectListener{
         PacketByteBuf buf = PacketByteBuf.create();
         buf.writeString((String) ClientConfig.getConfig().get("name","User"));
         Client.send2Server("Login", buf);
-        GUIManager.getInstance().removeGUI();
+        GUIManager.removeGui();
     }
 
     @Override

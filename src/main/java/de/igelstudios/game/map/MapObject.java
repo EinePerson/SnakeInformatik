@@ -5,6 +5,9 @@ import de.igelstudios.igelengine.client.graphics.Renderer;
 import de.igelstudios.igelengine.client.graphics.batch.ObjectBatch;
 import de.igelstudios.igelengine.common.scene.SceneObject;
 
+/**
+ * @author Laurin
+ */
 public class MapObject {
     private int x,y;
     private final SceneObject obj;
