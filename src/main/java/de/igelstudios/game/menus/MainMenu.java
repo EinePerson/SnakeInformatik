@@ -21,13 +21,13 @@ public class MainMenu extends GUI{
         render(Text.translatable("button.connect"), 40, 30);
         //render(Text.translatable("button.host"), 40, 28);
         render(Text.translatable("button.settings"), 30, 25);
-        render(Text.translatable("button.quit"), 30, 24);
-        Button credits =new Button(new Vector2f(40, 22), new Vector2f(5, 1));
+        render(Text.translatable("button.quit"), 30, 23);
+        Button credits =new Button(new Vector2f(30, 24), new Vector2f(5, 1));
         addButton(credits);
         credits.addListener(button -> {
             if (button.equals(MouseButton.LMB))GUIManager.setGUI(new Credits());
         });
-        render(Text.translatable("buuton.credits"),40, 22);
+        render(Text.translatable("button.credits"),30, 24);
         SceneObject obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(0,15).setSize(new Vector2f(5,1)).setTexSize(new Vector2f(5,1));
         //SceneObject obj2 = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(0,15).setSize(new Vector2f(5,1)).setTexSize(new Vector2f(5,1));
         Button connect = new Button(new Vector2f(40, 30), new Vector2f(5,1));
@@ -74,7 +74,7 @@ public class MainMenu extends GUI{
         });
 
 
-        Button quit = new Button(new Vector2f(30, 24), new Vector2f(5,1));
+        Button quit = new Button(new Vector2f(30, 23), new Vector2f(5,1));
         quit.addListener(button -> ClientMain.getInstance().getEngine().stop());
         addButton(quit);
 
