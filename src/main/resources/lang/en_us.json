@@ -1,3 +1,9 @@
 {
-  "button.connect": "Connect"
+  "button.connect": "Connect",
+  "button.credits": "Credits",
+  "kilij": "Chief Programmer: Kilian Finck",
+  "laurinj": "Executive Pragrammer: Laurin Dobrzanski",
+  "paulj": "Head of Sound: Paul Neubauer",
+  "juliusj": "Head of Design: Julius Schnicke",
+  "unwichtigj": "head of documentation: Anton Quaiser"
 }

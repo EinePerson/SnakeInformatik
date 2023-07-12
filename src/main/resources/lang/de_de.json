@@ -1,3 +1,9 @@
 {
-  "button.connect": "Verbinden"
+  "button.connect": "Verbinden",
+  "button.credits": "Mitwirkende",
+  "kilij": "Chef Programmierer: Kilian Finck",
+  "laurinj": "Programmierer: Laurin Dobrzanski",
+  "paulj": "Produzent: Paul Neubauer",
+  "juliusj": "Grafik Designer: Julius Schnicke",
+  "unwichtigj": "Dokumentation: Anton Quaiser"
 }
