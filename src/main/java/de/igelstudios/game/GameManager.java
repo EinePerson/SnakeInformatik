@@ -25,11 +25,12 @@ public class GameManager implements Tickable, ConnectionListener {
     private int speed;
     private int i;
     private int j;
+    private de.igelstudios.game.map.Map map;
 
     public GameManager(){
         speed = DEFAULT_SPEED;
         snakes = new HashMap<>();
-        new de.igelstudios.game.map.Map(30,30);
+        map = new de.igelstudios.game.map.Map(30,30);
     }
 
     @Override
@@ -172,5 +173,10 @@ public class GameManager implements Tickable, ConnectionListener {
     public void clear(){
         snakes.values().forEach(Snake::remove);
         snakes.clear();
+        de.igelstudios.game.map.Map.getInstance().removeBorder();
+    }
+
+    public de.igelstudios.game.map.Map getMap() {
+        return map;
     }
 }

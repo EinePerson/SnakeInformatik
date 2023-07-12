@@ -1,11 +1,15 @@
 package de.igelstudios.game.map;
 
+import de.igelstudios.ClientMain;
 import de.igelstudios.ServerMain;
 import de.igelstudios.game.ServerInit;
 import de.igelstudios.game.snake.Snake;
 import de.igelstudios.game.snake.SnakeSegment;
+import de.igelstudios.igelengine.client.graphics.Renderer;
+import de.igelstudios.igelengine.client.graphics.batch.ObjectBatch;
 import de.igelstudios.igelengine.common.networking.PacketByteBuf;
 import de.igelstudios.igelengine.common.networking.server.Server;
+import de.igelstudios.igelengine.common.scene.SceneObject;
 import org.joml.Vector2i;
 
 import java.util.ArrayList;
@@ -23,8 +27,11 @@ public class Map {
 
     private List<MapObject> mapObjects;
     private List<FoodObject> foodObjects;
+    private List<SceneObject> backGround;
+    private List<SceneObject> border;
 
     private static Map instance;
+    private boolean init = false;
 
     public Map(int sizeX, int sizeY){
         this.sizeX = sizeX;
@@ -32,6 +39,46 @@ public class Map {
         mapObjects = new ArrayList<>();
         foodObjects = new ArrayList<>();
         instance = this;
+        backGround = new ArrayList<>();
+        border = new ArrayList<>();
+    }
+
+    public void initBorder(){
+        if(ClientMain.getInstance() == null && !init)return;
+        init = true;
+        for (int i = 0; i < sizeX; i++) {
+            SceneObject obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(3,0);
+            border.add(obj);
+            Renderer.get().render(obj,i,sizeY);
+        }
+        for (int i = 0; i < sizeY; i++) {
+            SceneObject obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(3,0);
+            border.add(obj);
+            Renderer.get().render(obj,sizeX,i);
+        }
+        SceneObject objb = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(3,0);
+        border.add(objb);
+        Renderer.get().render(objb,sizeX,sizeY);
+
+        for (int i = 0; i < sizeY; i++) {
+            for (int j = 0; j < sizeX; j++) {
+                int k = 0;
+                k += i & 1;
+                k += j & 1;
+                SceneObject obj;
+                if(k == 1)obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(4,0);
+                else obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(5,0);;
+                backGround.add(obj);
+                Renderer.get().render(obj,j,i);
+            }
+        }
+    }
+
+    public void removeBorder(){
+        border.forEach(SceneObject::remove);
+        backGround.forEach(SceneObject::remove);
+        border.clear();
+        backGround.clear();
     }
 
     public static Map getInstance(){
