@@ -20,7 +20,7 @@ import java.util.*;
 
 public class GameManager implements Tickable, ConnectionListener {
     private Map<UUID,Snake> snakes;
-    public static final int DEFAULT_SPEED = 10;
+    public static final int DEFAULT_SPEED = 5;
     private static final int DEFAULT_FOOD_SPAWN = 100;
     private int speed;
     private int i;
