@@ -37,7 +37,7 @@ public class Snake {
         for (int i = segments.size() - 1; i >= 0; i--) {
             if(i == 0 || (i == segments.size() - 1 && queuedSeg)){
                 if(i == segments.size() - 1 && queuedSeg){
-                    segments.add(new SnakeSegment(segments.get(i).getPos()));
+                    segments.add(new SnakeSegment((Vector2f) segments.get(i).getPos().clone());
                     if(i != 0) segments.get(i).moveTo(segments.get(i - 1).getPos());
                     queuedSeg = false;
                     dirty = true;
