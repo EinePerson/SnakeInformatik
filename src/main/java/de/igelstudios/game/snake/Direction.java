@@ -27,4 +27,13 @@ public enum Direction {
         }
         return vec;
     }
+
+    public int getRot(){
+        return switch (this) {
+            case UP -> 0;
+            case LEFT -> 1;
+            case DOWN -> 2;
+            case RIGHT -> 3;
+        };
+    }
 }

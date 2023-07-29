@@ -53,7 +53,8 @@ public class Main implements EngineInitializer,ClientConnectListener{
     @Override
     public void onInitialize() {
         ServerStarter.create();
-        ObjectBatch.pool.getID("test2.png");
+        System.out.println(ObjectBatch.pool.get("test2.png").getID());
+        System.out.println(ObjectBatch.pool.get("test.png").getID());
         Common.init();
         //new MainMenu();
         manager = new GameManager();

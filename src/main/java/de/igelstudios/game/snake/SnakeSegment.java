@@ -10,13 +10,41 @@ public class SnakeSegment {
     private Vector2f pos;
     private final SceneObject obj;
 
-    SnakeSegment(Vector2f pos){
+    SnakeSegment(Vector2f pos,int type){
         this.pos = pos;
         if(ClientMain.getInstance() != null){
-            obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(0,0);
+            int i = switch (type) {
+                case 0 -> 0;
+                case 1 -> 6;
+                case 2 -> 7;
+                default -> throw new IllegalArgumentException("Type has to be one of 0,1,2 but is: " + type);
+            };
+            obj = new SceneObject().setTex(ObjectBatch.pool.getID("test2.png")).setUv(i,0);
             Renderer.get().render(obj, pos.x,pos.y);
         }
         else obj = new SceneObject().setPos(pos.x, pos.y);
+    }
+
+    public void setType(int type){
+        if(ClientMain.getInstance() != null){
+            int i = switch (type) {
+                case 0 -> 0;
+                case 1 -> 6;
+                case 2 -> 7;
+                default -> throw new IllegalArgumentException("Type has to be one of 0,1,2 but is: " + type);
+            };
+            obj.setUv(0,i);
+        }
+    }
+
+    public void setDirection(Direction dir){
+        if(ClientMain.getInstance() != null){
+            obj.setRotation(dir.getRot());
+        }
+    }
+
+    SnakeSegment(Vector2f pos){
+        this(pos,0);
     }
 
     public Vector2f getPos() {

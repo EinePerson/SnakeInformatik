@@ -15,7 +15,8 @@ import java.util.UUID;
 public class C2SLogIn{
     public static void receive(ClientNet sender, PacketByteBuf buf) {
         Snake.Creator snake = Snake.create();
-        snake.add(new Vector2f(1.0f,1.0f));
+        snake.add(new Vector2f(2.0f,1.0f));
+        snake.add(new Vector2f(1.0f,1.0f),2);
         ServerInit.getManager().addSnake(sender.getUUID(),snake.make());
         Map.getInstance().update2C(sender.getUUID());
         try {

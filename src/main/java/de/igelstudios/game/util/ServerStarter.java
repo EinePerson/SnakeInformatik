@@ -44,7 +44,7 @@ public class ServerStarter {
         try {
             File file = new File("server.bat");
             if(!file.createNewFile())throw new IOException("Could not create Server file");
-            Files.writeString(Path.of("server.bat"),"java -cp SnakeInformatik.jar de.igelstudios.ServerMain");
+            Files.writeString(Path.of("server.bat"),"java -cp libs/* de.igelstudios.ServerMain");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

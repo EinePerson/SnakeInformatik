@@ -37,8 +37,7 @@ public class Snake {
         for (int i = segments.size() - 1; i >= 0; i--) {
             if(i == 0 || (i == segments.size() - 1 && queuedSeg)){
                 if(i == segments.size() - 1 && queuedSeg){
-                    segments.add(new SnakeSegment((Vector2f) segments.get(i).getPos().clone());
-                    if(i != 0) segments.get(i).moveTo(segments.get(i - 1).getPos());
+                    segments.add(new SnakeSegment(new Vector2f(segments.get(i - 1).getPos())));
                     queuedSeg = false;
                     dirty = true;
                 }
@@ -48,6 +47,7 @@ public class Snake {
                         queued = null;
                         dirty = true;
                     }
+                    //segments.get(i).setDirection(direction);
                     segments.get(i).move(direction.move());
                 }
             }else segments.get(i).moveTo(segments.get(i - 1).getPos());
@@ -114,10 +114,16 @@ public class Snake {
         }
 
         public void add(Vector2f pos){
-            segments.add(new SnakeSegment(pos));
+            if(segments.size() == 0)segments.add(new SnakeSegment(pos,1));
+            else segments.add(new SnakeSegment(pos));
+        }
+
+        public void add(Vector2f pos,int type){
+            segments.add(new SnakeSegment(pos, type));
         }
         public Snake make(){
             if(!(segments.size() > 0))throw new IllegalArgumentException("The amount of segments in a snake has to be greater 0");
+            //segments.get(segments.size() - 1).setType(2);
             Snake snake = new Snake();
             if(dir == null)dir = Direction.RIGHT;
             snake.direction = this.dir;
